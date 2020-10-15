@@ -1,0 +1,65 @@
+<div class="container header">
+    {{title}}
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        <div class = "filter">
+            <div class = "filter1">Filters</div>
+            <div class= "yearFilter">Launch Year</div>
+            <hr>
+            <div class= "flex_container">
+                <div *ngFor = 'let item of year'>
+                    <button class = "btn flex_item" (click)= 'filterYear(item)'>
+                        {{item}}
+                    </button>
+                </div>
+            </div>
+            
+            <div class= "yearFilter">Successful Launch</div>
+            <hr>
+            <div class= "flex_container">
+                <div *ngFor = 'let item of launch'>
+                    <button class = "btn flex_item" (click)= 'filterLaunch(item)'>
+                        {{item}}
+                    </button>
+                </div>
+            </div>
+            <div class= "yearFilter">Successful Landing</div>
+            <hr>
+            <div class= "flex_container">
+                <div *ngFor = 'let item of land'>
+                    <button class = "btn flex_item" (click)= 'filterLand(item)'>
+                        {{item}}
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="col-sm-9 content">
+        <div class="card" *ngFor = "let p of response">
+            <img [src]="p.links.mission_patch" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">{{p.mission_name}} #{{p.flight_number}}</h5>
+                <div>
+                    <label>Mission Ids: </label>
+                    <ul *ngFor = "let m of p.mission_id" class= "blue">
+                        <li>{{m}}</li>
+                    </ul>
+                </div>
+                <label>Mission Year: </label>
+                <span class= "blue">{{p.launch_year}}</span>
+                <label>Successful Launch: </label>
+                <span class= "blue">{{p.launch_success}}</span>
+                <label>Successful Landing: </label>
+                <span class= "blue">{{p.launch_landing}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="page-footer font-small blue">
+    <div class="footer-copyright text-center py-3">
+      Developed By: Antara
+    </div>
+</footer>
